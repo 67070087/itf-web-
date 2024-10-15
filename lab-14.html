@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
     <title>Document</title>
 </head>
-<body>
+<body style="display: grid; justify-content: center;">
     <div id="parent"></div>
-    <h1 id="username">Username</h1>
-    <div id="profile" style="position: relative; height: 300px; width: 300px; background-image: url(https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg);background-size: cover; border-radius: 100%;">
-    <div style="position: absolute; bottom: 15px; right: 15px; height: 50px; width: 50px; background-color: red; border-radius: 100%; display: flex; justify-content: center;"></div>
-    <p style="position: absolute; bottom: 15px; right: 35px;">1</p>
+    <div style="width: 100vw; display: grid; justify-content: center;"><h1 id="username">Username</h1></div>
+    <div style="width: 100vw; display: grid; justify-content: center;">
+        <div id="profile" style="position: relative; height: 300px; width: 300px; background-image: url(https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg);background-size: cover; border-radius: 100%;">
+            <div style="position: absolute; bottom: 15px; right: 15px; height: 50px; width: 50px; background-color: red; border-radius: 100%; display: flex; justify-content: center; align-items: center">1</div>
+    </div></div>
+    <br>
+    <div style="width: 100vw; display: flex; justify-content: center;">
+    <label style="margin-right: 1rem;" for="">Set username</label>
+    <input type="text" placeholder="enter" id="input"><button onclick="setUsername()">Set</button>
     </div>
-    <label for="">Set username</label>
+    <br>
+    <div style="width: 100vw; display: flex; justify-content: center;">
+    <label style="margin-right: 1rem;" for="">Set profile image URL</label>
     <input type="text" placeholder="enter" id="input"><button onclick="setUsername()">Set</button>
-    <label for="">Set profile</label>
-    <input type="text" placeholder="enter" id="input"><button onclick="setUsername()">Set</button>
+    </div>
     <script>
         const username = document.getElementById("username");
         const input = document.getElementById("input")
