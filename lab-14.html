@@ -6,11 +6,10 @@
     <link rel="stylesheet" href="style2.css">
     <title>Document</title>
 </head>
-<body style="display: grid; justify-content: center; font-family: Arial, sans-serif;">
-    <div id="parent"></div>
-    <div style="width: 100vw; display: grid; justify-content: center;"><h1 id="username">Username</h1></div>
+<body style="display: grid; justify-content: center; font-family: Arial, sans-serif; justify-items: center;">
+    <div style="width: 100vw; display: grid; justify-content: center;"><h1 id="username"><a class="a" href="https://www.instagram.com/g9p_nin/">67070087 นรีรัศมิ์ จิตตฤกษ์</a></h1></div>
     <div style="width: 100vw; display: grid; justify-content: center;">
-        <div id="Profile" style="position: relative; height: 150px; width: 150px; background-image: url(https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg);background-size: cover; border-radius: 50%;">
+        <div id="Profile" style="position: relative; height: 183px; width: 183px; background-image: url(https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg);background-size: cover; border-radius: 50%;">
             <div style="position: absolute; bottom: 5px; right: 5px; height: 30px; width: 30px; background-color: rgb(255, 41, 41); border-radius: 100%; display: flex; justify-content: center; align-items: center; color: white;">1</div>
     </div></div>
     <br>
@@ -19,38 +18,35 @@
         <div style="position: relative; align-content: center;">
             <input style="padding: 7px 50px; background-color: rgb(226, 226, 226); border: none; border-radius: 5px; padding-left: 10px;" type="text" placeholder="Enter Username" id="input">
         </div>
-        <button style="margin: 15px; padding: 7px 15px; background-color: royalblue; color: white; border: none; border-radius: 5px;" onclick="setUsername()">SET</button>
+        <button style="margin: 15px; padding: 7px 15px; background-color: none; color: white; border: none; border-radius: 5px;" onclick="setUsername()">SET</button>
     </div>
     <div style="width: 100vw; display: flex; justify-content: center;">
         <label style="margin-right: 1rem; position: relative; align-content: center;" for="">Set profile image URL</label>
         <div style="position: relative; align-content: center;">
             <input style="padding: 7px 50px; background-color: rgb(226, 226, 226); border: none; border-radius: 5px; padding-left: 10px;" type="text" placeholder="Enter Image URL" id="profile">
         </div>
-        <button style="margin: 15px; padding: 7px 15px; background-color: royalblue; color: white; border: none; border-radius: 5px;" onclick="setImage()">SET</button>
+        <button style="margin: 15px; padding: 7px 15px; background-color: none; color: white; border: none; border-radius: 5px;" onclick="setImage()">SET</button>
     </div>
     <div style="display: flex; justify-content: center;"><h2>Phone Number List</h2></div>
-        <div style="display: flex; justify-content: center;">
+        <div style="display: flex; justify-content: center; top: -1rem; position: relative;">
             <input style="margin: 15px; padding: 7px 80px; background-color: rgb(226, 226, 226); border: none; border-radius: 5px; padding-left: 10px;" type="text" placeholder="Name" id="name">
-            <input style="margin: 15px; padding: 7px 80px; background-color: rgb(226, 226, 226); border: none; border-radius: 5px; padding-left: 10px; margin-left: 20px;" type="text" placeholder="Tel">
-            <button style="margin: 15px; padding: 7px 15px; background-color: royalblue; color: white; border: none; border-radius: 5px;" onclick="addParagraph()">ADD</button>
-            <button style="margin: 15px; padding: 7px 15px; background-color: royalblue; color: white; border: none; border-radius: 5px; margin-left: 5px;">EXPORT</button>
+            <input style="margin: 15px; padding: 7px 80px; background-color: rgb(226, 226, 226); border: none; border-radius: 5px; padding-left: 10px; margin-left: 20px;" type="text" placeholder="Tel" id="phone">
+            <button style="margin: 15px; padding: 7px 15px; background-color: none; color: white; border: none; border-radius: 5px;" id="change" onclick="updateRow()">ADD</button>
+            <button style="margin: 15px; padding: 7px 15px; background-color: none; color: white; border: none; border-radius: 5px; margin-left: 5px;" onclick="saveCSV()">EXPORT</button>
         </div>
-    <table style="margin-left: 50px; border-collapse: collapse; margin-top: 20px; background-color: rgb(226, 226, 226); margin-right: 50px;">
-        <thead>
-            <tr>
-                <th style="padding: 20px; text-align: left;">No.</th>
-                <th style="text-align: left;">Name</th>
-                <th style="text-align: left;">Phone Number</th>
-            </tr>
-        </thead>
+    <table id="parent">
+        <tr style="width: 90rem; background-color: rgb(226, 226, 226); display: grid; grid-template-columns: 0fr 0fr 0fr; position: relative; align-items: center; justify-content: center; height: 3rem; border-bottom: solid 2px rgb(124, 124, 124);">
+            <th style="width: 8rem; position: absolute; margin-left: 1rem;">No.</th>
+            <th style="width: 8rem; position: absolute; margin-left: 30rem;">Name</th>
+            <th style="width: 8rem; position: absolute; margin-left: 60rem;">Phone Number</th>
+            <td></td>
+        </tr>
     </table>
     
     <script>
         const username = document.getElementById("username");
         const input = document.getElementById("input")
         const profile = document.getElementById("profile")
-
-        username.textContent = "Hello";
         function setUsername(){
             console.log("input.value")
             username.textContent = input.value;
@@ -62,13 +58,60 @@
             Profile.style.backgroundImage = "url(" + profile.value + ")";
         };
 
-        function addParagraph(){
-                const a = document.createElement("P");
-                a.textContent = change.value;
-                const parent = document.getElementById("parent");
-                parent.appendChild(a);
+        let count = 0;
+        var phonenumber = [];
+        const parent = document.getElementById("parent");
 
+        function updateRow(){
+            count += 1;
+            const row = document.createElement("tr");
+            row.style="width: 90rem; background-color: none; display: grid; grid-template-columns: 0fr 0fr 0fr; position: relative; align-items: center; justify-content: center; height: 3rem; border-bottom: solid 2px rgb(124, 124, 124);";
+
+            const cellNo = document.createElement("td");
+            cellNo.classList.add("td-order");
+            cellNo.style = "width: 8rem; position: absolute; margin-left: 4.5rem;"
+            cellNo.textContent = count;
+
+            const cellName = document.createElement("td");
+            cellName.classList.add("td-name");
+            cellName.style = "width: 8rem; position: absolute; margin-left: 32.6rem;"
+            cellName.textContent = document.getElementById("name").value;
+
+            const cellTel = document.createElement("td");
+            cellTel.classList.add("td-phone");
+            cellTel.style = "width: 8rem; position: absolute; margin-left: 60.5rem;"
+            cellTel.textContent = document.getElementById("phone").value;
+
+            row.appendChild(cellNo);
+            row.appendChild(cellName);
+            row.appendChild(cellTel);
+            parent.appendChild(row);
+
+            let arr = [];
+            arr.push(count);
+            arr.push(document.getElementById("name").value);
+            arr.push(document.getElementById("phone").value);
+            phonenumber.push(arr);
+
+            console.log(phonenumber);
+
+            document.getElementById("name").value = "";
+            document.getElementById("phone").value = "";
         };
+
+        function saveCSV(){
+            const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+            const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "data.csv");
+            link.style.visibility = "hidden";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+
     </script>
 </body>
 </html>
