@@ -6,23 +6,45 @@
     <link rel="stylesheet" href="style2.css">
     <title>Document</title>
 </head>
-<body style="display: grid; justify-content: center;">
+<body style="display: grid; justify-content: center; font-family: Arial, sans-serif;">
     <div id="parent"></div>
     <div style="width: 100vw; display: grid; justify-content: center;"><h1 id="username">Username</h1></div>
     <div style="width: 100vw; display: grid; justify-content: center;">
-        <div id="profile" style="position: relative; height: 300px; width: 300px; background-image: url(https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg);background-size: cover; border-radius: 100%;">
-            <div style="position: absolute; bottom: 15px; right: 15px; height: 50px; width: 50px; background-color: red; border-radius: 100%; display: flex; justify-content: center; align-items: center">1</div>
+        <div id="Profile" style="position: relative; height: 150px; width: 150px; background-image: url(https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg);background-size: cover; border-radius: 50%;">
+            <div style="position: absolute; bottom: 5px; right: 5px; height: 30px; width: 30px; background-color: rgb(255, 41, 41); border-radius: 100%; display: flex; justify-content: center; align-items: center; color: white;">1</div>
     </div></div>
     <br>
     <div style="width: 100vw; display: flex; justify-content: center;">
-    <label style="margin-right: 1rem;" for="">Set username</label>
-    <input type="text" placeholder="enter" id="input"><button onclick="setUsername()">Set</button>
+        <label style="margin-right: 1rem; position: relative; align-content: center;" for="">Set username</label>
+        <div style="position: relative; align-content: center;">
+            <input style="padding: 7px 50px; background-color: rgb(226, 226, 226); border: none; border-radius: 5px; padding-left: 10px;" type="text" placeholder="Enter Username" id="input">
+        </div>
+        <button style="margin: 15px; padding: 7px 15px; background-color: royalblue; color: white; border: none; border-radius: 5px;" onclick="setUsername()">SET</button>
     </div>
-    <br>
     <div style="width: 100vw; display: flex; justify-content: center;">
-    <label style="margin-right: 1rem;" for="">Set profile image URL</label>
-    <input type="text" placeholder="enter" id="input"><button onclick="setUsername()">Set</button>
+        <label style="margin-right: 1rem; position: relative; align-content: center;" for="">Set profile image URL</label>
+        <div style="position: relative; align-content: center;">
+            <input style="padding: 7px 50px; background-color: rgb(226, 226, 226); border: none; border-radius: 5px; padding-left: 10px;" type="text" placeholder="Enter Image URL" id="profile">
+        </div>
+        <button style="margin: 15px; padding: 7px 15px; background-color: royalblue; color: white; border: none; border-radius: 5px;" onclick="setImage()">SET</button>
     </div>
+    <div style="display: flex; justify-content: center;"><h2>Phone Number List</h2></div>
+        <div style="display: flex; justify-content: center;">
+            <input style="margin: 15px; padding: 7px 80px; background-color: rgb(226, 226, 226); border: none; border-radius: 5px; padding-left: 10px;" type="text" placeholder="Name" id="name">
+            <input style="margin: 15px; padding: 7px 80px; background-color: rgb(226, 226, 226); border: none; border-radius: 5px; padding-left: 10px; margin-left: 20px;" type="text" placeholder="Tel">
+            <button style="margin: 15px; padding: 7px 15px; background-color: royalblue; color: white; border: none; border-radius: 5px;" onclick="addParagraph()">ADD</button>
+            <button style="margin: 15px; padding: 7px 15px; background-color: royalblue; color: white; border: none; border-radius: 5px; margin-left: 5px;">EXPORT</button>
+        </div>
+    <table style="margin-left: 50px; border-collapse: collapse; margin-top: 20px; background-color: rgb(226, 226, 226); margin-right: 50px;">
+        <thead>
+            <tr>
+                <th style="padding: 20px; text-align: left;">No.</th>
+                <th style="text-align: left;">Name</th>
+                <th style="text-align: left;">Phone Number</th>
+            </tr>
+        </thead>
+    </table>
+    
     <script>
         const username = document.getElementById("username");
         const input = document.getElementById("input")
@@ -35,13 +57,18 @@
             input.value = "";
         };
 
-        function SetProfile(){
-            profile.style.backgroundImage = "url(" + + ")"
-        }
-        function createElement(){
-            const a = document.createElement("p");
-            a.textContent = "Hi";
-        }
+        function setImage(){
+            console.log("profile.value")
+            Profile.style.backgroundImage = "url(" + profile.value + ")";
+        };
+
+        function addParagraph(){
+                const a = document.createElement("P");
+                a.textContent = change.value;
+                const parent = document.getElementById("parent");
+                parent.appendChild(a);
+
+        };
     </script>
 </body>
 </html>
